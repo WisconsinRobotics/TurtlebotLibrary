@@ -25,10 +25,29 @@ SerialPort::~SerialPort()
     this->Close();
 }
 
-
-bool SerialPort::PortIsOpen() const
+bool SerialPort::IsOpen() const
 {
     return this->opened;
+}
+
+const char * SerialPort::GetPort() const
+{
+    return this->port;
+}
+
+int SerialPort::GetBaud() const
+{
+    return this->baud;
+}
+
+void SerialPort::SetPortName(const char *portname)
+{
+    this->port = portname;
+}
+
+void SerialPort::SetBaud(int baudrate)
+{
+    this->baud = baudrate;
 }
 
 #ifdef _WIN32
@@ -85,10 +104,10 @@ bool SerialPort::Open()
 
 void SerialPort::Close()
 {
-	if (this->opened == true)
-		
-    //if (handle != INVALID_SERIAL_PORT_HANDLE)
+	if (this->opened)
         CloseHandle(handle);
+
+    this->opened = false;
 }
 
 int SerialPort::WriteData(const void *data, int size_bytes)

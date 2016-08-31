@@ -28,29 +28,39 @@ bool TurtlebotCommandSender::Initialize(const char *port, DriveMode driveMode)
     if (!port)
         return false;
 
-    serialPort = SerialPort(port, DEFAULT_BAUD_RATE);
+    serialPort.SetPortName(port);
+    serialPort.SetBaud(DEFAULT_BAUD_RATE);
+
     if (!serialPort.Open())
         return false;
 
 	initialized = true;
+    
+    // must send the Start message on startup before Turtlebot can switch to a different mode
+    if (driveMode != DriveMode::Passive)
+    {
+        Start start;
+        this->SendTurtlebotMessage(&start);
+    }
     this->SetDriveMode(driveMode);
 
     readThread = std::thread(&TurtlebotCommandSender::ReceiveMessage, this);
-
 	return true;
 }
 
 void TurtlebotCommandSender::SetDriveMode(DriveMode driveMode)
 {
+    Start start;
+    Safe safe;
+    Full full;
+
     this->mode = driveMode;
 
-	Start start;
-	Safe safe;
-	Full full;
-    
-	this->SendTurtlebotMessage(&start);
     switch (this->mode)
     {
+        case DriveMode::Passive:
+            this->SendTurtlebotMessage(&start);
+            break;
         case DriveMode::Safe:
             this->SendTurtlebotMessage(&safe);
             break;

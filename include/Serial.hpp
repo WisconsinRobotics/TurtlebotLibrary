@@ -30,8 +30,15 @@ namespace TurtlebotLibrary
         SerialPort(const char *port, int baud);
         ~SerialPort();
         bool Open();
+        bool IsOpen() const;
         void Close();
-        bool PortIsOpen() const;
+
+        const char * GetPort() const;
+        int GetBaud() const;
+
+        void SetPortName(const char *port);
+        void SetBaud(int baud);
+
         int WriteData(const void *data, int size_bytes);
         int ReadData(void *data, int max_size_bytes);
     private:

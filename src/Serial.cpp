@@ -95,7 +95,7 @@ bool SerialPort::Open()
     if (!SetCommTimeouts(handle, &commTO))
     {
         CloseHandle(handle);
-        return INVALID_HANDLE_VALUE;
+        return false;
     }
 
     this->opened = true;
@@ -165,8 +165,10 @@ bool SerialPort::Open()
 
 void SerialPort::Close()
 {
-    if (handle > 0)
+    if (this->opened)
         close(handle);
+
+    this->opened = false;
 }
 
 int SerialPort::WriteData(const void *data, int size_bytes)

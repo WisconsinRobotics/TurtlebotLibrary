@@ -18,7 +18,7 @@ namespace TurtlebotLibrary
             ~TurtlebotCommandSender();
             bool Initialize(const char *port, DriveMode driveMode = DriveMode::Safe);
             void SetDriveMode(DriveMode driveMode);
-            void SendTurtlebotMessage(TurtlebotMessage msg);
+            void SendTurtlebotMessage(TurtlebotMessage *msg);
             void RegisterCallback(const std::function<void(const uint8_t*, int)>& callback);
 
         private:

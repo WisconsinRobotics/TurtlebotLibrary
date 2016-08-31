@@ -19,7 +19,26 @@ int main(int argc, char **argv)
     }
 
     /* test code here */
+	TurtlebotLibrary::Drive *driver = new TurtlebotLibrary::Drive(175, TurtlebotLibrary::Drive::STRAIGHT);
+
+	cmder.SendTurtlebotMessage(driver);
+
+	std::cin.ignore();
+
+	driver->SetRadius(TurtlebotLibrary::Drive::CLOCKWISE);
+	cmder.SendTurtlebotMessage(driver);
+
+	std::cin.ignore();
+
+	driver->SetRadius(TurtlebotLibrary::Drive::COUNTERCLOCKWISE);
+	cmder.SendTurtlebotMessage(driver);
+
+	std::cin.ignore();
+
+	driver->SetVelocity(0);
+	cmder.SendTurtlebotMessage(driver);
 
 
+	delete driver;
     return 0;
 }

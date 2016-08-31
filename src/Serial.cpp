@@ -8,6 +8,7 @@ SerialPort::SerialPort()
     this->port = nullptr;
     this->baud = 0;
     this->opened = false;
+	this->handle = INVALID_SERIAL_PORT_HANDLE;
 }
 
 
@@ -16,6 +17,7 @@ SerialPort::SerialPort(const char *port, int baud)
     this->port = port;
     this->baud = baud;
     this->opened = false;
+	this->handle = INVALID_SERIAL_PORT_HANDLE;
 }
 
 SerialPort::~SerialPort()
@@ -83,7 +85,9 @@ bool SerialPort::Open()
 
 void SerialPort::Close()
 {
-    if (handle != INVALID_SERIAL_PORT_HANDLE)
+	if (this->opened == true)
+		
+    //if (handle != INVALID_SERIAL_PORT_HANDLE)
         CloseHandle(handle);
 }
 

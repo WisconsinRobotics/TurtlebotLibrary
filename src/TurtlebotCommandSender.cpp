@@ -4,7 +4,7 @@
 #include "msg/Start.hpp"
 #include "msg/Actuator.hpp"
 
-constexpr int DEFAULT_BAUD_RATE = 115200;
+constexpr int DEFAULT_BAUD_RATE = 57600;
 constexpr int READ_BUFFER_SIZE = 256;
 
 using namespace TurtlebotLibrary;
@@ -32,38 +32,40 @@ bool TurtlebotCommandSender::Initialize(const char *port, DriveMode driveMode)
     if (!serialPort.Open())
         return false;
 
+	initialized = true;
     this->SetDriveMode(driveMode);
 
     readThread = std::thread(&TurtlebotCommandSender::ReceiveMessage, this);
 
-    initialized = true;
-    return true;
+	return true;
 }
 
 void TurtlebotCommandSender::SetDriveMode(DriveMode driveMode)
 {
     this->mode = driveMode;
+
+	Start start;
+	Safe safe;
+	Full full;
     
+	this->SendTurtlebotMessage(&start);
     switch (this->mode)
     {
-        case DriveMode::Passive:
-            this->SendTurtlebotMessage(Start());
-            break;
         case DriveMode::Safe:
-            this->SendTurtlebotMessage(Safe());
+            this->SendTurtlebotMessage(&safe);
             break;
         case DriveMode::Full:
-            this->SendTurtlebotMessage(Full());
+            this->SendTurtlebotMessage(&full);
             break;
     }
 }
 
-void TurtlebotCommandSender::SendTurtlebotMessage(TurtlebotMessage msg)
+void TurtlebotCommandSender::SendTurtlebotMessage(TurtlebotMessage *msg)
 {
     if (!initialized)
         return;
 
-    std::vector<uint8_t> data = msg.Serialize();
+    std::vector<uint8_t> data = msg->Serialize();
     const uint8_t *buffer = data.data();
 
     serialPort.WriteData(buffer, data.size());

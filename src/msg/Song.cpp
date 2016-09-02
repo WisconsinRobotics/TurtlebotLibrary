@@ -15,8 +15,8 @@ Song::~Song()
 
 void Song::AddNote(Note n, int octave)
 {
-    this->notes.push_back(static_cast<uint8_t>((octave * 6) + n->note));
-    this->durations.push_back(static_cast<uint8_t>(n->duration);
+    this->notes.push_back(static_cast<uint8_t>((octave * 6) + static_cast<uint8_t>(n.note)));
+    this->durations.push_back(n.duration);
 }
 
 int Song::GetSongId()
@@ -29,16 +29,11 @@ int Song::GetSongLength()
     return this->length;
 }
 
-Note* Song::GetSong()
-{
-    
-}
-
 /*  Serial sequence: [140] [Song Number] [Song Length]
  *  [Note Number 1] [Note Duration 1] [Note Number 2]
  *  [Note Duration 2], etc. 
  */
-std::vector<uint8_t> Drive::SerializePayload()
+std::vector<uint8_t> Song::SerializePayload()
 {
     int i;
     std::vector<uint8_t> payload;

@@ -1,38 +1,35 @@
 #pragma once
 
+#include <cstdint>
+
 namespace TurtlebotLibrary
 {
     enum class Notes : uint8_t
     {
         G  = 31,
-        G# = 32,
-        Ab = 32,
+        Gsharp = 32,
+        Aflat = 32,
         A  = 33,
-        A# = 34,
-        Bb = 34,
+        Asharp = 34,
+        Bflat = 34,
         B  = 35,
-        B  = 36,
-        Cb = 35,
+        Bsharp  = 36,
+        Cflat = 35,
         C  = 36,
-        C# = 37,
-        Db = 37,
+        Csharp = 37,
+        Dflat = 37,
         D  = 38,
-        D# = 39,
-        Eb = 39,
+        Dsharp = 39,
+        Eflat = 39,
         E  = 40,
-        Fb = 40,
+        Fflat = 40,
         F  = 41,
-        F# = 42
+        Fsharp = 42
     };
 
-    class Note
+    struct Note
     {
-        public:
-            Note(Notes note, int duration);
-            ~Note();
-        private:
-            Notes note;
-            int duration;
-    }    
-
+        Notes note;
+        uint8_t duration;
+    };
 }

@@ -56,12 +56,13 @@ namespace TurtlebotLibrary
             void AddNote(Note n, int octave);
             int GetSongId();
             int GetSongLength();
-            Note* GetSong();
+        protected:
+            std::vector<uint8_t> SerializePayload();
 
         private:
             int id;
             int length;
-            uint8_t* notes;
-            uint8_t* durations;
-    }
+            std::vector<uint8_t> notes;
+            std::vector<uint8_t> durations;
+    };
 }

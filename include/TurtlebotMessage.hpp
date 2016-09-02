@@ -33,7 +33,8 @@ namespace TurtlebotLibrary
         Sensor = 142,
 
         // Song
-        Song = 140
+        Song = 140,
+        PlaySong = 141
     };
 
     class TurtlebotMessage

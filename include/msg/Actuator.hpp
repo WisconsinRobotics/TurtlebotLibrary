@@ -64,4 +64,16 @@ namespace TurtlebotLibrary
             int id;
             std::vector<Note> notes;
     };
+
+    class PlaySong : public TurtlebotMessage
+    {
+        public:
+            PlaySong(int songNum);
+            ~PlaySong();
+            int GetSongNum();
+        protected:
+            std::vector<uint8_t> SerializePayload();
+        private:
+            int songNum;
+    }
 }

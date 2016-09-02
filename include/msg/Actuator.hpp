@@ -51,9 +51,10 @@ namespace TurtlebotLibrary
     class Song : public TurtlebotMessage
     {
         public:
-            Song(int id, int numNotes);
+            Song(int id);
             ~Song();
-            void AddNote(Note n, int octave);
+            bool AddNote(Note n);
+            bool AddNote(Notes n, uint8_t octave, uint8_t duration);
             int GetSongId();
             int GetSongLength();
         protected:
@@ -61,8 +62,6 @@ namespace TurtlebotLibrary
 
         private:
             int id;
-            int length;
-            std::vector<uint8_t> notes;
-            std::vector<uint8_t> durations;
+            std::vector<Note> notes;
     };
 }

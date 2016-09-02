@@ -2,21 +2,29 @@
 
 using namespace TurtlebotLibrary;
 
+constexpr int MAX_NOTES_PER_SONG = 16;
 
-Song::Song(int id, int numNotes) : TurtlebotMessage(TurtlebotCommandCode::Song)
+Song::Song(int id) : TurtlebotMessage(TurtlebotCommandCode::Song)
 {
     this->id = id;
-    this->length = numNotes;
 }
 
 Song::~Song()
 {
 }
 
-void Song::AddNote(Note n, int octave)
+bool Song::AddNote(Note n)
 {
-    this->notes.push_back(static_cast<uint8_t>((octave * 6) + static_cast<uint8_t>(n.note)));
-    this->durations.push_back(n.duration);
+    if (notes.size() >= MAX_NOTES_PER_SONG)
+        return false;
+
+    this->notes.push_back(n);
+    return true;
+}
+
+bool Song::AddNote(Notes n, uint8_t octave, uint8_t duration)
+{
+    return this->AddNote({n, octave, duration});
 }
 
 int Song::GetSongId()
@@ -26,7 +34,7 @@ int Song::GetSongId()
 
 int Song::GetSongLength()
 {
-    return this->length;
+    return this->notes.size();
 }
 
 /*  Serial sequence: [140] [Song Number] [Song Length]
@@ -35,16 +43,18 @@ int Song::GetSongLength()
  */
 std::vector<uint8_t> Song::SerializePayload()
 {
-    int i;
     std::vector<uint8_t> payload;
+    uint8_t size;
+
+    size = static_cast<uint8_t>(this->notes.size());
 
     payload.push_back(static_cast<uint8_t>(this->id));
-    payload.push_back(static_cast<uint8_t>(this->length));
+    payload.push_back(size);
     
-    for(i = 0; i < this->length; i++) 
+    for (Note& n : this->notes)
     {
-        payload.push_back(static_cast<uint8_t>(this->notes[i]));
-        payload.push_back(static_cast<uint8_t>(this->durations[i]));
+        payload.push_back(static_cast<uint8_t>((n.octave * 6) + static_cast<uint8_t>(n.note)));
+        payload.push_back(static_cast<uint8_t>(n.duration));
     }
 
     return payload;

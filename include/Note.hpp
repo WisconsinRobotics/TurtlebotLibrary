@@ -30,6 +30,7 @@ namespace TurtlebotLibrary
     struct Note
     {
         Notes note;
+        uint8_t octave;
         uint8_t duration;
     };
 }

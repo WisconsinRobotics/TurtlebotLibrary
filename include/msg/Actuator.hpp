@@ -1,6 +1,7 @@
 #pragma once
 
 #include "TurtlebotMessage.hpp"
+#include "Note.hpp"
 #include <bitset>
 
 namespace TurtlebotLibrary
@@ -46,4 +47,21 @@ namespace TurtlebotLibrary
         private:
             std::bitset<8> pinEnable;
     };
+
+    class Song : public TurtlebotMessage
+    {
+        public:
+            Song(int id, int numNotes);
+            ~Song();
+            void AddNote(Note n, int octave);
+            int GetSongId();
+            int GetSongLength();
+            Note* GetSong();
+
+        private:
+            int id;
+            int length;
+            uint8_t* notes;
+            uint8_t* durations;
+    }
 }

@@ -30,7 +30,10 @@ namespace TurtlebotLibrary
         Wait_Event = 158,
 
         // Input packets
-        Sensor = 142
+        Sensor = 142,
+
+        // Song
+        Song = 140
     };
 
     class TurtlebotMessage

@@ -11,12 +11,13 @@ PlaySong::~PlaySong()
 {
 }
 
-int GetSongNum()
+int PlaySong::GetSongNum()
 {
     return this->songNum;
 }
 
-std::vector<uint8_t> Song::SerializePayload()
+std::vector<uint8_t> PlaySong::SerializePayload()
 {
-    return static_cast<uint8_t>(this->songNum);
+    std::vector<uint8_t> payload = { static_cast<uint8_t>(this->songNum) };
+    return payload;
 }

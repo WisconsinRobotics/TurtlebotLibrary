@@ -75,5 +75,5 @@ namespace TurtlebotLibrary
             std::vector<uint8_t> SerializePayload();
         private:
             int songNum;
-    }
+    };
 }

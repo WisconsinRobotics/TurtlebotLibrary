@@ -6,6 +6,7 @@ namespace TurtlebotLibrary
 {
     enum class Notes : uint8_t
     {
+        Rest = 0,
         G  = 31,
         Gsharp = 32,
         Aflat = 32,

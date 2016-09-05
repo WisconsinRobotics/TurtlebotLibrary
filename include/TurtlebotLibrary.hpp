@@ -9,3 +9,4 @@
 #include "msg/Actuator.hpp"
 #include "msg/Mode.hpp"
 #include "msg/Start.hpp"
+#include "msg/Sensor.hpp"

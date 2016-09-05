@@ -79,9 +79,13 @@ void TurtlebotCommandSender::SendTurtlebotMessage(TurtlebotMessage *msg)
     const uint8_t *buffer = data.data();
 
     serialPort.WriteData(buffer, data.size());
+
+    // XXX: there is technically a race condition here
+    // this is used to annotate incoming data from the turtlebot
+    this->lastSent = msg->GetCommandCode();
 }
 
-void TurtlebotCommandSender::RegisterCallback(const std::function<void(const uint8_t *, int)>& callback)
+void TurtlebotCommandSender::RegisterCallback(const std::function<void(const uint8_t *, int, TurtlebotCommandCode)>& callback)
 {
     this->receive_callback = callback;
 }
@@ -93,13 +97,12 @@ void TurtlebotCommandSender::ReceiveMessage(void)
     if (!this->initialized)
         return;
 
-    do
+    while (!stopReading)
     {
         std::memset(buffer, 0, READ_BUFFER_SIZE);
         int bytesRead = serialPort.ReadData(buffer, READ_BUFFER_SIZE);
 
         if (this->receive_callback && bytesRead > 0)
-            this->receive_callback(buffer, bytesRead);
-
-    } while (!stopReading);
+            this->receive_callback(buffer, bytesRead, this->lastSent);
+    }
 }

@@ -53,7 +53,7 @@ std::vector<uint8_t> Song::SerializePayload()
     
     for (Note& n : this->notes)
     {
-        payload.push_back(static_cast<uint8_t>((n.octave * 12) + static_cast<uint8_t>(n.note)));
+        payload.push_back(static_cast<uint8_t>(((n.octave + 1) * 12) + static_cast<uint8_t>(n.note)));
         payload.push_back(static_cast<uint8_t>(n.duration));
     }
 

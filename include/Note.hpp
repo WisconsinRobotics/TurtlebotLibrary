@@ -34,10 +34,10 @@ namespace TurtlebotLibrary
         uint8_t duration;
     };
 
-    Note GenerateRestNote(uint8_t duration)
+    inline Note GenerateRestNote(uint8_t duration)
     {
         // As per spec, Turtlebot treats any MIDI note
-        // as a rest note 
+        // outside the range 31-127 as a rest note 
         return { Notes::C, 0, duration };
     }
 }

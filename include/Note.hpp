@@ -6,26 +6,25 @@ namespace TurtlebotLibrary
 {
     enum class Notes : uint8_t
     {
-        Rest = 0,
-        G  = 31,
-        Gsharp = 32,
-        Aflat = 32,
-        A  = 33,
-        Asharp = 34,
-        Bflat = 34,
-        B  = 35,
-        Bsharp  = 36,
-        Cflat = 35,
-        C  = 36,
-        Csharp = 37,
-        Dflat = 37,
-        D  = 38,
-        Dsharp = 39,
-        Eflat = 39,
-        E  = 40,
-        Fflat = 40,
-        F  = 41,
-        Fsharp = 42
+        C           = 0,
+        Csharp      = 1,
+        Dflat       = 1,
+        D           = 2,
+        Dsharp      = 3,
+        Eflat       = 3,
+        E           = 4,
+        Fflat       = 4,
+        F           = 5,
+        Fsharp      = 6,
+        G           = 7,
+        Gsharp      = 8,
+        Aflat       = 8,
+        A           = 9,
+        Asharp      = 10,
+        Bflat       = 10,
+        B           = 11,
+        Bsharp      = 0,
+        Cflat       = 11,
     };
 
     struct Note
@@ -34,4 +33,11 @@ namespace TurtlebotLibrary
         uint8_t octave;
         uint8_t duration;
     };
+
+    Note GenerateRestNote(uint8_t duration)
+    {
+        // As per spec, Turtlebot treats any MIDI note
+        // as a rest note 
+        return { Notes::C, 0, duration };
+    }
 }

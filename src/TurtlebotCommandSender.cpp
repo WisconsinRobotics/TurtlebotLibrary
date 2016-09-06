@@ -20,7 +20,8 @@ TurtlebotCommandSender::~TurtlebotCommandSender()
     serialPort.Close();
     initialized = false;
     stopReading = true;
-    readThread.join();
+    if (readThread.joinable())
+        readThread.join();
 }
 
 bool TurtlebotCommandSender::Initialize(const char *port, DriveMode driveMode)

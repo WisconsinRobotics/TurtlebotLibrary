@@ -30,17 +30,18 @@ namespace TurtlebotLibrarySharp
         Notes note;
         System::Byte octave;
         System::Byte duration;
+
+    public:
+        static Note^ GenerateRestNote(System::Byte duration)
+        {
+            // As per spec, Turtlebot treats any MIDI note
+            // outside the range 31-127 as a rest note 
+            Note^ rest = gcnew Note();
+            rest->note = Notes::C;
+            rest->octave = 0;
+            rest->duration = duration;
+
+            return rest;
+        }
     };
-
-    Note^ GenerateRestNote(System::Byte duration)
-    {
-        // As per spec, Turtlebot treats any MIDI note
-        // outside the range 31-127 as a rest note 
-        Note^ rest = gcnew Note();
-        rest->note = Notes::C;
-        rest->octave = 0;
-        rest->duration = duration;
-
-        return rest;
-    }
 }

@@ -1,61 +1,42 @@
-#include "msg/Actuator.hpp"
+#include "Actuator.hpp"
 
-using namespace TurtlebotLibrary;
+using namespace TurtlebotLibrarySharp;
 
-constexpr int MAX_NOTES_PER_SONG = 16;
-
-Song::Song(int id) : TurtlebotMessage(TurtlebotCommandCode::Song)
+Song::Song(System::Int32 id) : TurtlebotMessage()
 {
-    this->id = id;
+    this->msg = new TurtlebotLibrary::Song(id);
 }
 
 Song::~Song()
 {
 }
 
-bool Song::AddNote(Note n)
+System::Boolean Song::AddNote(Note^ n)
 {
-    if (notes.size() >= MAX_NOTES_PER_SONG)
-        return false;
+    TurtlebotLibrary::Note native_note;
+    native_note.note = (TurtlebotLibrary::Notes)(n->note);
+    native_note.octave = n->octave;
+    native_note.duration = n->duration;
 
-    this->notes.push_back(n);
-    return true;
+    return static_cast<TurtlebotLibrary::Song *>(this->msg)->AddNote(native_note);
 }
 
-bool Song::AddNote(Notes n, uint8_t octave, uint8_t duration)
+System::Boolean Song::AddNote(Notes n, System::Byte octave, System::Byte duration)
 {
-    return this->AddNote({n, octave, duration});
+    Note^ note = gcnew Note();
+    note->note = n;
+    note->octave = octave;
+    note->duration = duration;
+
+    return this->AddNote(note);
 }
 
-int Song::GetSongId()
+System::Int32 Song::GetSongId()
 {
-    return this->id;
+    return static_cast<TurtlebotLibrary::Song *>(this->msg)->GetSongId();
 }
 
-int Song::GetSongLength()
+System::Int32 Song::GetSongLength()
 {
-    return this->notes.size();
-}
-
-/*  Serial sequence: [140] [Song Number] [Song Length]
- *  [Note Number 1] [Note Duration 1] [Note Number 2]
- *  [Note Duration 2], etc. 
- */
-std::vector<uint8_t> Song::SerializePayload()
-{
-    std::vector<uint8_t> payload;
-    uint8_t size;
-
-    size = static_cast<uint8_t>(this->notes.size());
-
-    payload.push_back(static_cast<uint8_t>(this->id));
-    payload.push_back(size);
-    
-    for (Note& n : this->notes)
-    {
-        payload.push_back(static_cast<uint8_t>(((n.octave + 1) * 12) + static_cast<uint8_t>(n.note)));
-        payload.push_back(static_cast<uint8_t>(n.duration));
-    }
-
-    return payload;
+    return static_cast<TurtlebotLibrary::Song *>(this->msg)->GetSongLength();
 }

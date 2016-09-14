@@ -8,7 +8,13 @@ namespace TurtlebotLibrarySharp
     public ref class Start : public TurtlebotMessage
     {
         public:
-            Start() : TurtlebotMessage(TurtlebotCommandCode::Start) { }
-            ~Start() { }
+            Start() : TurtlebotMessage() 
+            {
+                this->msg = new TurtlebotLibrary::Start();
+            }
+
+            ~Start()
+            { 
+            }
     };
 }

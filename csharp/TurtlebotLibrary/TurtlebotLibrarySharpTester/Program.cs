@@ -12,8 +12,8 @@ namespace TurtlebotLibrarySharpTester
     {
         static void Main(string[] args)
         {
-            TurtlebotMessage msg = new TurtlebotMessage(TurtlebotCommandCode.Full);
-            byte[] buffer = msg.Serialize();
+            Drive d = new Drive(100, 50);
+            byte[] buffer = d.Serialize();
 
             foreach (byte b in buffer)
                 Console.Write("{0:X} ", b);

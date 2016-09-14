@@ -2,25 +2,37 @@
 
 #include "TurtlebotMessage.hpp"
 
+using namespace System::Threading;
+
 namespace TurtlebotLibrarySharp
 {
-    public enum class DriveMode : System::Byte
+    public enum class DriveMode
     {
         Passive, Safe, Full
     };
 
     public ref class TurtlebotCommandSender
     {
-        public:
-            typedef void (*ReadDataCallback)(array<System::Byte>^ data, System::Byte length, TurtlebotCommandCode lastPacketSentOpcode);
-            TurtlebotCommandSender();
-            ~TurtlebotCommandSender();
-            bool Initialize(System::String^ port, DriveMode driveMode);
-            void SetDriveMode(DriveMode driveMode);
-            void SendTurtlebotMessage(TurtlebotMessage^ msg);
-            void RegisterCallback(ReadDataCallback callback);
+    public:
+        
 
-        private:
-            TurtlebotLibrary::TurtlebotCommandSender *commandSender;
+        TurtlebotCommandSender();
+        ~TurtlebotCommandSender();
+        bool Initialize(System::String^ port, DriveMode driveMode);
+        void SetDriveMode(DriveMode driveMode);
+        void SendTurtlebotMessage(TurtlebotMessage^ msg);
+
+        delegate void ReadCallback(array<System::Byte>^ buffer, System::Int32 length, TurtlebotCommandCode lastPacketOpcode);
+        ReadCallback^ OnReadData = nullptr;
+
+    private:
+        DriveMode mode;
+        TurtlebotLibrary::SerialPort *serialPort = nullptr;
+        bool initialized;
+        bool stopReading;
+        TurtlebotCommandCode lastSent;
+        Thread^ readThread;
+
+        void ReceiveMessage(void);
     };
 }

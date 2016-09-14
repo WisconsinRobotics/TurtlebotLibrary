@@ -2,27 +2,31 @@
 
 using namespace TurtlebotLibrarySharp;
 
-Drive::Drive(int velocity, int radius) : TurtlebotMessage(TurtlebotCommandCode::Drive)
+Drive::Drive(System::Int32  velocity, System::Int32  radius) : TurtlebotMessage()
 {
+    this->msg = new TurtlebotLibrary::Drive(velocity, radius);
 }
 
 Drive::~Drive()
 {
 }
 
-int Drive::GetVelocity()
+System::Int32 Drive::GetVelocity()
 {
+    return static_cast<TurtlebotLibrary::Drive *>(this->msg)->GetVelocity();
 }
 
-void Drive::SetVelocity(int vel)
+void Drive::SetVelocity(System::Int32 vel)
 {
+    static_cast<TurtlebotLibrary::Drive *>(this->msg)->SetVelocity(vel);
 }
 
-int Drive::GetRadius()
+System::Int32 Drive::GetRadius()
 {
+    return static_cast<TurtlebotLibrary::Drive *>(this->msg)->GetRadius();
 }
 
-void Drive::SetRadius(int rad)
+void Drive::SetRadius(System::Int32 rad)
 {
-
+    static_cast<TurtlebotLibrary::Drive *>(this->msg)->SetRadius(rad);
 }

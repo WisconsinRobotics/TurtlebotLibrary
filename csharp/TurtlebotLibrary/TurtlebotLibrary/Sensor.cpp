@@ -1,28 +1,23 @@
-#include "msg/Sensor.hpp"
+#include "Sensor.hpp"
 
-using namespace TurtlebotLibrary;
+using namespace TurtlebotLibrarySharp;
 
 
-Sensor::Sensor(SensorPacketID packet_id) : TurtlebotMessage(TurtlebotCommandCode::Sensor)
+Sensor::Sensor(SensorPacketID packet_id) : TurtlebotMessage()
 {
-    this->id = packet_id;
+    this->msg = new TurtlebotLibrary::Sensor((TurtlebotLibrary::SensorPacketID)packet_id);
 }
 
 Sensor::~Sensor()
 {
 }
 
-SensorPacketID Sensor::GetPacketID() const
+SensorPacketID Sensor::GetPacketID()
 {
-    return this->id;
-}
-void Sensor::SetPacketID(SensorPacketID packet_id)
-{
-    this->id = packet_id;
+    return (SensorPacketID) static_cast<TurtlebotLibrary::Sensor *>(this->msg)->GetPacketID();
 }
 
-std::vector<uint8_t> Sensor::SerializePayload()
+void Sensor::SetPacketID(SensorPacketID packet_id)
 {
-    std::vector<uint8_t> payload = { static_cast<uint8_t>(this->id) };
-    return payload;
+    static_cast<TurtlebotLibrary::Sensor *>(this->msg)->SetPacketID((TurtlebotLibrary::SensorPacketID) packet_id);
 }

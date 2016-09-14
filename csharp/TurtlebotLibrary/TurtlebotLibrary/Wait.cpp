@@ -1,121 +1,85 @@
-#include "msg/Wait.hpp"
+#include "Wait.hpp"
 
-using namespace TurtlebotLibrary;
+using namespace TurtlebotLibrarySharp;
 
 
-WaitTime::WaitTime(uint8_t tenths) : TurtlebotMessage(TurtlebotCommandCode::Wait_Time)
+WaitTime::WaitTime(System::Byte tenths) : TurtlebotMessage()
 {
-    this->delay = tenths;
+    this->msg = new TurtlebotLibrary::WaitTime(tenths);
 }
 
 WaitTime::~WaitTime()
 {
 }
 
-uint8_t WaitTime::GetDelay() const
+System::Byte WaitTime::GetDelay() 
 {
-    return this->delay;
+    return static_cast<TurtlebotLibrary::WaitTime *>(this->msg)->GetDelay();
 }
 
-void WaitTime::SetDelay(uint8_t time)
+void WaitTime::SetDelay(System::Byte time)
 {
-    this->delay = time;
+    static_cast<TurtlebotLibrary::WaitTime *>(this->msg)->SetDelay(time);
 }
 
-std::vector<uint8_t> WaitTime::SerializePayload()
+WaitDistance::WaitDistance(System::Int16 dist) : TurtlebotMessage()
 {
-    std::vector<uint8_t> payload = { this->delay };
-    return payload;
-}
-
-WaitDistance::WaitDistance(int16_t dist) : TurtlebotMessage(TurtlebotCommandCode::Wait_Distance)
-{
-    this->distance = dist;
+    this->msg = new TurtlebotLibrary::WaitDistance(dist);
 }
 
 WaitDistance::~WaitDistance()
 {
 }
 
-int16_t WaitDistance::GetDistance() const
+System::Int16 WaitDistance::GetDistance() 
 {
-    return this->distance;
+    return static_cast<TurtlebotLibrary::WaitDistance *>(this->msg)->GetDistance();
 }
 
-void WaitDistance::SetDistance(int16_t dist)
+void WaitDistance::SetDistance(System::Int16 dist)
 {
-    this->distance = dist;
+    static_cast<TurtlebotLibrary::WaitDistance *>(this->msg)->SetDistance(dist);
 }
 
-std::vector<uint8_t> WaitDistance::SerializePayload()
+WaitAngle::WaitAngle(System::Int16 ang) : TurtlebotMessage()
 {
-    std::vector<uint8_t> payload;
-    payload.push_back(static_cast<uint8_t>(this->distance >> 8));
-    payload.push_back(static_cast<uint8_t>(this->distance & 0xFF));
-    return payload;
-}
-
-WaitAngle::WaitAngle(int16_t ang) : TurtlebotMessage(TurtlebotCommandCode::Wait_Angle)
-{
-    this->angle = ang;
+    this->msg = new TurtlebotLibrary::WaitTime(ang);
 }
 
 WaitAngle::~WaitAngle()
 {
 }
 
-int16_t WaitAngle::GetAngle() const
+System::Int16 WaitAngle::GetAngle() 
 {
-    return this->angle;
+    return static_cast<TurtlebotLibrary::WaitAngle *>(this->msg)->GetAngle();
 }
 
-void WaitAngle::SetAngle(int16_t ang)
+void WaitAngle::SetAngle(System::Int16 ang)
 {
-    this->angle = ang;
+    static_cast<TurtlebotLibrary::WaitAngle *>(this->msg)->SetAngle(ang);
 }
 
-std::vector<uint8_t> WaitAngle::SerializePayload()
+WaitEvent::WaitEvent(Event e, System::Boolean inverse) : TurtlebotMessage()
 {
-    std::vector<uint8_t> payload;
-    payload.push_back(static_cast<uint8_t>(this->angle >> 8));
-    payload.push_back(static_cast<uint8_t>(this->angle & 0xFF));
-    return payload;
-}
-
-WaitEvent::WaitEvent(Event e, bool inverse) : TurtlebotMessage(TurtlebotCommandCode::Wait_Event)
-{
-    this->wait_event = e;
-    this->inverted = inverse;
+    this->msg = new TurtlebotLibrary::WaitEvent((TurtlebotLibrary::Event) e, inverse);
 }
 
 WaitEvent::~WaitEvent()
 {
 }
 
-Event WaitEvent::GetEvent() const
+Event WaitEvent::GetEvent() 
 {
-    return this->wait_event;
+    return (Event) static_cast<TurtlebotLibrary::WaitEvent *>(this->msg)->GetEvent();
 }
 
-bool WaitEvent::IsInverted() const
+bool WaitEvent::IsInverted() 
 {
-    return this->inverted;
+    return static_cast<TurtlebotLibrary::WaitEvent *>(this->msg)->IsInverted();
 }
 
 void WaitEvent::SetEvent(Event e, bool inverse)
 {
-    this->wait_event = e;
-    this->inverted = inverse;
-}
-
-std::vector<uint8_t> WaitEvent::SerializePayload()
-{
-    std::vector<uint8_t> payload;
-
-    if (this->inverted)
-        payload.push_back(~static_cast<uint8_t>(this->wait_event) + 1);
-    else
-        payload.push_back(static_cast<uint8_t>(this->wait_event));
-
-    return payload;
+    static_cast<TurtlebotLibrary::WaitEvent *>(this->msg)->SetEvent((TurtlebotLibrary::Event) e, inverse);
 }

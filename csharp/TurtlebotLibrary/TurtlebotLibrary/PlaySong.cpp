@@ -1,23 +1,17 @@
-#include "msg/Actuator.hpp"
+#include "Actuator.hpp"
 
-using namespace TurtlebotLibrary;
+using namespace TurtlebotLibrarySharp;
 
-PlaySong::PlaySong(int songNum) : TurtlebotMessage(TurtlebotCommandCode::PlaySong)
+PlaySong::PlaySong(System::Int32 songNum) : TurtlebotMessage()
 {
-    this->songNum = songNum;
+    this->msg = new TurtlebotLibrary::PlaySong(songNum);
 }
 
 PlaySong::~PlaySong()
 {
 }
 
-int PlaySong::GetSongNum()
+System::Int32 PlaySong::GetSongNum()
 {
-    return this->songNum;
-}
-
-std::vector<uint8_t> PlaySong::SerializePayload()
-{
-    std::vector<uint8_t> payload = { static_cast<uint8_t>(this->songNum) };
-    return payload;
+    return static_cast<TurtlebotLibrary::PlaySong *>(this->msg)->GetSongNum();
 }

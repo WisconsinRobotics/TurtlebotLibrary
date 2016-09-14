@@ -1,9 +1,14 @@
 #pragma once
 
-#pragma once
-
 #include <cstdint>
-#include "../../../cpp/include/TurtlebotLibrary.hpp"
+#include "../../../cpp/include/Serial.hpp"
+#include "../../../cpp/include/TurtlebotMessage.hpp"
+#include "../../../cpp/include/Note.hpp"
+#include "../../../cpp/include/msg/Actuator.hpp"
+#include "../../../cpp/include/msg/Mode.hpp"
+#include "../../../cpp/include/msg/Start.hpp"
+#include "../../../cpp/include/msg/Sensor.hpp"
+#include "../../../cpp/include/msg/Wait.hpp"
 
 using TurtlebotLibrary::TurtlebotCommandCode;
 
@@ -44,15 +49,15 @@ namespace TurtlebotLibrarySharp
     public ref class TurtlebotMessage
     {
     public:
-        TurtlebotMessage(TurtlebotCommandCode commandCode);
-        virtual ~TurtlebotMessage();
+        TurtlebotMessage();
+        ~TurtlebotMessage();
         TurtlebotCommandCode GetCommandCode();
         array<System::Byte>^ Serialize();
         System::Boolean Deserialize(array<System::Byte>^ buffer, System::Int32 length);
         System::IntPtr GetRawPtr();
 
-    private:
-        TurtlebotLibrary::TurtlebotMessage *msg;
+    protected:
+        TurtlebotLibrary::TurtlebotMessage *msg = nullptr;
     };
 }
 

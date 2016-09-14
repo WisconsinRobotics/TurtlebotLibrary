@@ -22,9 +22,6 @@ namespace TurtlebotLibrarySharp
             void SetVelocity(System::Int32 velocity);
             System::Int32 GetRadius();
             void SetRadius(System::Int32 radius);
-
-        private:
-            TurtlebotLibrary::Drive *drive;
     };
 
     public ref class DigitalOutputs : public TurtlebotMessage
@@ -32,12 +29,9 @@ namespace TurtlebotLibrarySharp
         public:
             DigitalOutputs();
             ~DigitalOutputs();
-            std::bitset<8> GetPinEnables();
-            System::Boolean IsPinEnabled(uint8_t pin);
-            void SetPinEnable(uint8_t pin, bool enable);
-
-        private:
-            TurtlebotLibrary::DigitalOutputs *digitalOutputs;
+            array<System::Boolean>^ GetPinEnables();
+            System::Boolean IsPinEnabled(System::Byte pin);
+            void SetPinEnable(System::Byte pin, bool enable);
     };
 
     public ref class Song : public TurtlebotMessage
@@ -45,13 +39,10 @@ namespace TurtlebotLibrarySharp
         public:
             Song(System::Int32 id);
             ~Song();
-            System::Boolean AddNote(Note n);
+            System::Boolean AddNote(Note^ n);
             System::Boolean AddNote(Notes n, System::Byte octave, System::Byte duration);
             System::Int32 GetSongId();
             System::Int32 GetSongLength();
-
-        private:
-            TurtlebotLibrary::Song *song;
     };
 
     public ref class PlaySong : public TurtlebotMessage
@@ -60,7 +51,5 @@ namespace TurtlebotLibrarySharp
             PlaySong(System::Int32 songNum);
             ~PlaySong();
             System::Int32 GetSongNum();
-        private:
-            TurtlebotLibrary::PlaySong *playSong;
     };
 }

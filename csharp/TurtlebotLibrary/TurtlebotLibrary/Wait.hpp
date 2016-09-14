@@ -1,7 +1,6 @@
 #pragma once
 
 #include "TurtlebotMessage.hpp"
-#include <cstdint>
 
 namespace TurtlebotLibrarySharp
 {
@@ -38,9 +37,6 @@ namespace TurtlebotLibrarySharp
         ~WaitTime();
         System::Byte GetDelay();
         void SetDelay(System::Byte time);
-
-    private:
-        uint8_t delay;
     };
 
     public ref class WaitDistance : public TurtlebotMessage
@@ -50,9 +46,6 @@ namespace TurtlebotLibrarySharp
         ~WaitDistance();
         System::Int16 GetDistance();
         void SetDistance(System::Int16 dist);
-
-    private:
-        System::Int16 distance;
     };
 
     public ref class WaitAngle : public TurtlebotMessage
@@ -62,9 +55,6 @@ namespace TurtlebotLibrarySharp
         ~WaitAngle();
         System::Int16 GetAngle();
         void SetAngle(System::Int16 angle);
-
-    private:
-        int16_t angle;
     };
 
     public ref class WaitEvent : public TurtlebotMessage
@@ -75,9 +65,5 @@ namespace TurtlebotLibrarySharp
         Event GetEvent();
         bool IsInverted();
         void SetEvent(Event e, bool inverse);
-
-    private:
-        Event wait_event;
-        bool inverted;
     };
 }

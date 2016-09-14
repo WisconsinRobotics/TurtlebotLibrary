@@ -1,34 +1,34 @@
 #include "Actuator.hpp"
 
+
 using namespace TurtlebotLibrarySharp;
 
-DigitalOutputs::DigitalOutputs() : TurtlebotMessage(TurtlebotCommandCode::Digital_Outputs)
+DigitalOutputs::DigitalOutputs() : TurtlebotMessage()
 {
-    this->digitalOutputs = new TurtlebotLibrary::DigitalOutputs();
+    this->msg = new TurtlebotLibrary::DigitalOutputs();
 }
 
 DigitalOutputs::~DigitalOutputs()
 {
-    delete this->digitalOutputs;
 }
 
-std::bitset<8> DigitalOutputs::GetPinEnables() const
+array<System::Boolean>^ DigitalOutputs::GetPinEnables()
 {
-    return this->pinEnable;
+    auto pins = static_cast<TurtlebotLibrary::DigitalOutputs *>(this->msg)->GetPinEnables();
+    array<System::Boolean>^ managed_pins = gcnew array<System::Boolean>(pins.size());
+
+    for (int i = 0; i < pins.size(); i++)
+        managed_pins[i] = pins[i];
+
+    return managed_pins;
 }
 
-bool DigitalOutputs::IsPinEnabled(uint8_t pin) const
+System::Boolean DigitalOutputs::IsPinEnabled(System::Byte pin)
 {
-    if (pinToBitPosMap.find(pin) == pinToBitPosMap.end())
-        return false;
-        
-    return this->pinEnable[pinToBitPosMap[pin]]; 
+    return static_cast<TurtlebotLibrary::DigitalOutputs *>(this->msg)->IsPinEnabled(pin);
 }
 
-void DigitalOutputs::SetPinEnable(uint8_t pin, bool enable)
+void DigitalOutputs::SetPinEnable(System::Byte pin, bool enable)
 {
-    if (pinToBitPosMap.find(pin) == pinToBitPosMap.end())
-        return;
-
-    this->pinEnable[pinToBitPosMap[pin]] = enable; 
+    static_cast<TurtlebotLibrary::DigitalOutputs *>(this->msg)->SetPinEnable(pin, enable);
 }

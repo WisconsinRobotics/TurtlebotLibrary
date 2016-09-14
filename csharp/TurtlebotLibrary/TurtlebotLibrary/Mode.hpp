@@ -2,21 +2,32 @@
 
 #include "TurtlebotMessage.hpp"
 
-
-namespace TurtlebotLibrary
+namespace TurtlebotLibrarySharp
 {
-    class Full : public TurtlebotMessage
+    public ref class Full : public TurtlebotMessage
     {
         public:
-            Full() : TurtlebotMessage(TurtlebotCommandCode::Full) { }
-            ~Full() { }
+            Full() : TurtlebotMessage() 
+            {
+                this->msg = new TurtlebotLibrary::Full();
+            }
+
+            ~Full()
+            { 
+            }
     };
 
-    class Safe : public TurtlebotMessage
+    public ref class Safe : public TurtlebotMessage
     {
         public:
-            Safe() : TurtlebotMessage(TurtlebotCommandCode::Safe) { }
-            ~Safe() { }
+            Safe() : TurtlebotMessage() 
+            {
+                this->msg = new TurtlebotLibrary::Safe();
+            }
+
+            ~Safe()
+            { 
+            }
     };
 
 }

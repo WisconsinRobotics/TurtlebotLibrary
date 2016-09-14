@@ -1,15 +1,15 @@
-#include "TurtlebotMessage.h"
+#include "TurtlebotMessage.hpp"
 
 using namespace TurtlebotLibrarySharp;
 
-TurtlebotMessage::TurtlebotMessage(TurtlebotLibrarySharp::TurtlebotCommandCode commandCode)
+TurtlebotMessage::TurtlebotMessage()
 {
-    msg = new TurtlebotLibrary::TurtlebotMessage((TurtlebotLibrary::TurtlebotCommandCode)commandCode);
 }
 
 TurtlebotMessage::~TurtlebotMessage()
 {
-    delete msg;
+    if (msg)
+        delete msg;
 }
 
 TurtlebotLibrarySharp::TurtlebotCommandCode TurtlebotMessage::GetCommandCode()
@@ -35,5 +35,5 @@ System::Boolean TurtlebotMessage::Deserialize(array<System::Byte>^ buffer, Syste
 
 System::IntPtr TurtlebotMessage::GetRawPtr()
 {
-    return this->msg;
+    return System::IntPtr(this->msg);
 }

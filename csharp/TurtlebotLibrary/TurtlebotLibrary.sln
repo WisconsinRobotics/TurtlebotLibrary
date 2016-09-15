@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TurtlebotLibrary", "TurtlebotLibrary\TurtlebotLibrary.vcxproj", "{ADE450BB-9981-4E2E-A214-8B8BE86F468E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TurtlebotLibrarySharp", "TurtlebotLibrary\TurtlebotLibrary.vcxproj", "{ADE450BB-9981-4E2E-A214-8B8BE86F468E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TurtlebotLibraryNative", "TurtlebotLibraryNative\TurtlebotLibraryNative.vcxproj", "{EB0F14AF-EA30-42C3-913D-1C3A73C8CAE2}"
 EndProject
@@ -20,6 +20,7 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{ADE450BB-9981-4E2E-A214-8B8BE86F468E}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{ADE450BB-9981-4E2E-A214-8B8BE86F468E}.Debug|Any CPU.Build.0 = Debug|Win32
 		{ADE450BB-9981-4E2E-A214-8B8BE86F468E}.Debug|x64.ActiveCfg = Debug|x64
 		{ADE450BB-9981-4E2E-A214-8B8BE86F468E}.Debug|x64.Build.0 = Debug|x64
 		{ADE450BB-9981-4E2E-A214-8B8BE86F468E}.Debug|x86.ActiveCfg = Debug|Win32
@@ -30,6 +31,7 @@ Global
 		{ADE450BB-9981-4E2E-A214-8B8BE86F468E}.Release|x86.ActiveCfg = Release|Win32
 		{ADE450BB-9981-4E2E-A214-8B8BE86F468E}.Release|x86.Build.0 = Release|Win32
 		{EB0F14AF-EA30-42C3-913D-1C3A73C8CAE2}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{EB0F14AF-EA30-42C3-913D-1C3A73C8CAE2}.Debug|Any CPU.Build.0 = Debug|Win32
 		{EB0F14AF-EA30-42C3-913D-1C3A73C8CAE2}.Debug|x64.ActiveCfg = Debug|x64
 		{EB0F14AF-EA30-42C3-913D-1C3A73C8CAE2}.Debug|x64.Build.0 = Debug|x64
 		{EB0F14AF-EA30-42C3-913D-1C3A73C8CAE2}.Debug|x86.ActiveCfg = Debug|Win32

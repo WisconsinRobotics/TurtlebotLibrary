@@ -12,22 +12,22 @@ Script::~Script()
 {
 }
 
-uint8_t Script::getScriptLength() const
+uint8_t Script::GetScriptLength() const
 {
 	return this->scriptLength;
 }
 
-void Script::setScriptLength(uint8_t scriptLength)
+void Script::SetScriptLength(uint8_t scriptLength)
 {
 	this->scriptLength = scriptLength;
 }
 
-void Script::addCommand(TurtlebotMessage *msg)
+void Script::AddCommand(TurtlebotMessage *msg)
 {
 	commandVector.push_back(msg);
 }
 
-std::vector<TurtlebotMessage*> Script::getCommandVector()
+std::vector<TurtlebotMessage*> Script::GetCommandVector()
 {
 	return this->commandVector;
 }

@@ -50,13 +50,13 @@ namespace TurtlebotLibrarySharpTester
 
             TurtlebotCommandSender c = new TurtlebotCommandSender();
             c.Initialize(serialPort, DriveMode.Safe);
-            Drive driveMessage = new Drive((int)100, (int)Drive.STRAIGHT);
-            c.SendTurtlebotMessage(driveMessage);
-            WaitTime w = new WaitTime(10);
-            c.SendTurtlebotMessage(w);
-            System.Threading.Thread.Sleep(5000);
-            Drive stop = new Drive((int)0, (int)Drive.STRAIGHT);
-            c.SendTurtlebotMessage(stop);
+            //Drive driveMessage = new Drive((int)100, (int)Drive.STRAIGHT);
+            //c.SendTurtlebotMessage(driveMessage);
+            //WaitTime w = new WaitTime(10);
+            //c.SendTurtlebotMessage(w);
+            //System.Threading.Thread.Sleep(5000);
+            //Drive stop = new Drive((int)0, (int)Drive.STRAIGHT);
+            //c.SendTurtlebotMessage(stop);
             Console.Read();
         }
     }

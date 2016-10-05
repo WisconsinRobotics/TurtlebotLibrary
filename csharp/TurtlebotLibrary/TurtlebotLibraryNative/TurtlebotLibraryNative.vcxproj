@@ -125,6 +125,7 @@
     <ClInclude Include="..\..\..\cpp\include\TurtlebotCommandSender.hpp" />
     <ClInclude Include="..\..\..\cpp\include\TurtlebotLibrary.hpp" />
     <ClInclude Include="..\..\..\cpp\include\TurtlebotMessage.hpp" />
+    <ClInclude Include="Script.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\cpp\src\msg\DigitalOutputs.cpp" />
@@ -136,6 +137,7 @@
     <ClCompile Include="..\..\..\cpp\src\Serial.cpp" />
     <ClCompile Include="..\..\..\cpp\src\TurtlebotCommandSender.cpp" />
     <ClCompile Include="..\..\..\cpp\src\TurtlebotMessage.cpp" />
+    <ClCompile Include="Script.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

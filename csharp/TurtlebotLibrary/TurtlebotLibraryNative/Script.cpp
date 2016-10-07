@@ -39,7 +39,7 @@ std::vector<uint8_t> Script::SerializePayload()
 	for (int i = 0; i < this->commandVector.size(); i++) {
 		std::vector<uint8_t> currCommandPayload = this->commandVector[i]->Serialize();
 		for (int j = 0; j < currCommandPayload.size(); j++) {
-			payload.push_back(currCommandPayload[i]);
+			payload.push_back(currCommandPayload[j]);
 		}
 	}
 

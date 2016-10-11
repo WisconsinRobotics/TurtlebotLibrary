@@ -37,7 +37,8 @@ namespace TurtlebotLibrary
 		PlaySong = 141,
 
 		// Script ********
-		Script = 153
+		Script = 152,
+		PlayScript = 153
     };
 
     class TurtlebotMessage

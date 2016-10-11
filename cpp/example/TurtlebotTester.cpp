@@ -2,6 +2,7 @@
 #include <iostream>
 #include <memory>
 #include "msg/Script.hpp" // why is this necessay but nothing is needed for note???
+#include "msg/PlayScript.hpp"
 
 
 using namespace TurtlebotLibrary;
@@ -37,14 +38,21 @@ int main(int argc, char **argv)
 	//std::cout << argv[1];
     Script *s = new Script(3);
     Drive *d1 = new Drive((int)100, (int)32768);
-    WaitDistance *w = new WaitDistance(5000);
-    Drive *d2 = new Drive((int)0, (int)32768);
+    WaitDistance *w1 = new WaitDistance(250);
+    Drive *d2 = new Drive((int)100, (int)Drive::CLOCKWISE);
+	WaitAngle *w2 = new WaitAngle((int)90);
+	Drive *d3 = new Drive(0, Drive::STRAIGHT);
     s->AddCommand(d1);
-	s->AddCommand(w);
-	s->AddCommand(d2);
-	cmder.SendTurtlebotMessage(d1);
+	s->AddCommand(w1);
+	s->AddCommand(d3);
+//	s->AddCommand(w2);
+//	s->AddCommand(d1);
+//	s->AddCommand(w1);
+//	s->AddCommand(d3);
+	cmder.SendTurtlebotMessage(s);
 
-	while (1){}
+	PlayScript *playScript = new PlayScript();
+	cmder.SendTurtlebotMessage(playScript);
 
-    return 0;
+	return 0;
 }

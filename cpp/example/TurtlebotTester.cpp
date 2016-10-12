@@ -1,8 +1,8 @@
 #include "TurtlebotLibrary.hpp"
 #include <iostream>
 #include <memory>
-#include "msg/Script.hpp" // why is this necessay but nothing is needed for note???
-#include "msg/PlayScript.hpp"
+//#include "msg/Script.hpp" // why is this necessay but nothing is needed for note???
+//#include "msg/PlayScript.hpp"
 
 
 using namespace TurtlebotLibrary;
@@ -33,24 +33,31 @@ int main(int argc, char **argv)
         return 1;
     }
 
-//    for (Note& n : on_wisconsin)
-//        n.duration *= EIGHTH_NOTES_PER_DURATION;
-	//std::cout << argv[1];
-    Script *s = new Script(3);
-    Drive *d1 = new Drive((int)100, (int)32768);
-    WaitDistance *w1 = new WaitDistance(250);
-    Drive *d2 = new Drive((int)100, (int)Drive::CLOCKWISE);
-	WaitAngle *w2 = new WaitAngle((int)90);
-	Drive *d3 = new Drive(0, Drive::STRAIGHT);
-    s->AddCommand(d1);
-	s->AddCommand(w1);
-	s->AddCommand(d3);
-//	s->AddCommand(w2);
-//	s->AddCommand(d1);
-//	s->AddCommand(w1);
-//	s->AddCommand(d3);
-	cmder.SendTurtlebotMessage(s);
-
+    for (Note& n : on_wisconsin)
+        n.duration *= EIGHTH_NOTES_PER_DURATION;
+	std::cout << argv[1];
+    Script *s1 = new Script(3);
+	Script *s2 = new Script(3);
+    Drive *driveStraight = new Drive(150, Drive::STRAIGHT);
+    WaitDistance *wait1Meter = new WaitDistance(500);
+    Drive *driveRight = new Drive(150, Drive::CLOCKWISE);
+	Drive *driveLeft = new Drive(150, Drive::COUNTERCLOCKWISE);
+	WaitAngle *waitLeftAngle = new WaitAngle(90);
+	WaitAngle *waitRightAngle = new WaitAngle(-90);
+	Drive *driveStop = new Drive(0, Drive::STRAIGHT);
+    s1->AddCommand(driveStraight);
+	s1->AddCommand(wait1Meter);
+	s1->AddCommand(driveRight);
+	s1->AddCommand(waitRightAngle);
+	s1->AddCommand(driveStraight);
+	s1->AddCommand(wait1Meter);
+	s1->AddCommand(driveLeft);
+	s1->AddCommand(waitLeftAngle);
+	s1->AddCommand(driveStraight);
+	s1->AddCommand(wait1Meter);
+	s1->AddCommand(driveStop);
+	cmder.SendTurtlebotMessage(s1);
+//	cmder.SendTurtlebotMessage(s2);
 	PlayScript *playScript = new PlayScript();
 	cmder.SendTurtlebotMessage(playScript);
 

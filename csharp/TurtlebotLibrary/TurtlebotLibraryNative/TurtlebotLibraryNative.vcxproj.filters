@@ -45,7 +45,10 @@
     <ClInclude Include="..\..\..\cpp\include\msg\Wait.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Script.hpp">
+    <ClInclude Include="..\..\..\cpp\include\msg\PlayScript.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cpp\include\msg\Script.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -77,7 +80,10 @@
     <ClCompile Include="..\..\..\cpp\src\msg\Wait.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Script.cpp">
+    <ClCompile Include="..\..\..\cpp\src\msg\PlayScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\cpp\src\msg\Script.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,8 +1,6 @@
 #include "TurtlebotLibrary.hpp"
 #include <iostream>
 #include <memory>
-//#include "msg/Script.hpp" // why is this necessay but nothing is needed for note???
-//#include "msg/PlayScript.hpp"
 
 
 using namespace TurtlebotLibrary;
@@ -36,8 +34,8 @@ int main(int argc, char **argv)
     for (Note& n : on_wisconsin)
         n.duration *= EIGHTH_NOTES_PER_DURATION;
 	std::cout << argv[1];
-    Script *s1 = new Script(3);
-	Script *s2 = new Script(3);
+    Script *s1 = new Script();
+	Script *s2 = new Script();
     Drive *driveStraight = new Drive(150, Drive::STRAIGHT);
     WaitDistance *wait1Meter = new WaitDistance(500);
     Drive *driveRight = new Drive(150, Drive::CLOCKWISE);

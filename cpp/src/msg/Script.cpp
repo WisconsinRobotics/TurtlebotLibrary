@@ -2,24 +2,12 @@
 
 using namespace TurtlebotLibrary;
 
-Script::Script(uint8_t scriptLength) : TurtlebotMessage(TurtlebotCommandCode::Script)
+Script::Script() : TurtlebotMessage(TurtlebotCommandCode::Script)
 {
-	// should 
-	this->scriptLength = scriptLength; 
 }
 
 Script::~Script()
 {
-}
-
-uint8_t Script::GetScriptLength() const
-{
-	return this->scriptLength;
-}
-
-void Script::SetScriptLength(uint8_t scriptLength)
-{
-	this->scriptLength = scriptLength;
 }
 
 void Script::AddCommand(TurtlebotMessage *msg)

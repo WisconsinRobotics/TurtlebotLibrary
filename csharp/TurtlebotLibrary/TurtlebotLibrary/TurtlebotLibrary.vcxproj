@@ -133,6 +133,7 @@
     <ClInclude Include="Actuator.hpp" />
     <ClInclude Include="Mode.hpp" />
     <ClInclude Include="Note.hpp" />
+    <ClInclude Include="Script.hpp" />
     <ClInclude Include="Sensor.hpp" />
     <ClInclude Include="Start.hpp" />
     <ClInclude Include="TurtlebotCommandSender.hpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="PlaySong.cpp" />
     <ClCompile Include="Sensor.cpp" />
     <ClCompile Include="Song.cpp" />
+    <ClCompile Include="Script.cpp" />
     <ClCompile Include="TurtlebotCommandSender.cpp" />
     <ClCompile Include="TurtlebotMessage.cpp" />
     <ClCompile Include="Wait.cpp" />

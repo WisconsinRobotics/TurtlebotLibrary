@@ -8,6 +8,7 @@
 #include "../../../cpp/include/msg/Mode.hpp"
 #include "../../../cpp/include/msg/Start.hpp"
 #include "../../../cpp/include/msg/Sensor.hpp"
+#include "../../../cpp/include/msg/Script.hpp"
 #include "../../../cpp/include/msg/Wait.hpp"
 
 using TurtlebotLibrary::TurtlebotCommandCode;

@@ -20,7 +20,10 @@ void Script::AddCommand(TurtlebotMessage^ msg)
 
 List<TurtlebotMessage^> Script::GetCommandVector()
 {
-	void * thing = (static_cast<TurtlebotLibrary::Script *>(this->msg)->GetCommandVector())->GetRawPrt().ToPointer();
-	List<TurtlebotMessage^> toRet;
-	return static_cast<std::vector<TurtlebotMessage>>(this->msg)->GetCommandVector();
-}
+    std::vector<TurtlebotLibrary::TurtlebotMessage *> x = static_cast<TurtlebotLibrary::Script *>(this->msg)->GetCommandVector();
+	List<TurtlebotMessage^>^ toRet = gcnew List<TurtlebotMessage^>();
+	for (int i = 0; i < x.size(); i++) {
+		toRet.Add(x[i]);
+	}
+	return toRet;
+}  // std::vector<TurtlebotMessage^>.GetRawPtr().ToPointer()

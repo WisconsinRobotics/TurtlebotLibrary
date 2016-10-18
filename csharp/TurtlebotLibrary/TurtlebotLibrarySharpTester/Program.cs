@@ -50,13 +50,26 @@ namespace TurtlebotLibrarySharpTester
 
             TurtlebotCommandSender c = new TurtlebotCommandSender();
             c.Initialize(serialPort, DriveMode.Safe);
-            //Drive driveMessage = new Drive((int)100, (int)Drive.STRAIGHT);
-            //c.SendTurtlebotMessage(driveMessage);
-            //WaitTime w = new WaitTime(10);
-            //c.SendTurtlebotMessage(w);
-            //System.Threading.Thread.Sleep(5000);
-            //Drive stop = new Drive((int)0, (int)Drive.STRAIGHT);
-            //c.SendTurtlebotMessage(stop);
+            Script s = new Script();
+            Drive driveStraight = new Drive(100, Drive.STRAIGHT);
+            Drive turnRight = new Drive(100, Drive.CLOCKWISE);
+            Drive turnLeft = new Drive(100, Drive.COUNTERCLOCKWISE);
+            Drive stop = new Drive(0, Drive.STRAIGHT);
+            WaitDistance halfMeter = new WaitDistance(500);
+            WaitAngle rightTurn = new WaitAngle(-90);
+            WaitAngle leftTurn = new WaitAngle(90);
+
+            s.AddCommand(driveStraight);
+            s.AddCommand(halfMeter);
+            s.AddCommand(turnRight);
+            s.AddCommand(leftTurn);
+            s.AddCommand(driveStraight);
+            s.AddCommand(halfMeter);
+            s.AddCommand(turnLeft);
+            s.AddCommand(leftTurn);
+            s.AddCommand(driveStraight);
+            s.AddCommand(halfMeter);
+            s.AddCommand(stop);
             Console.Read();
         }
     }

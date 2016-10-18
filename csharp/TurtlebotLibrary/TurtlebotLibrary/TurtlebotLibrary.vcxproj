@@ -133,6 +133,7 @@
     <ClInclude Include="Actuator.hpp" />
     <ClInclude Include="Mode.hpp" />
     <ClInclude Include="Note.hpp" />
+    <ClInclude Include="PlayScript.hpp" />
     <ClInclude Include="Script.hpp" />
     <ClInclude Include="Sensor.hpp" />
     <ClInclude Include="Start.hpp" />
@@ -143,6 +144,7 @@
   <ItemGroup>
     <ClCompile Include="DigitalOutputs.cpp" />
     <ClCompile Include="Drive.cpp" />
+    <ClCompile Include="PlayScript.cpp" />
     <ClCompile Include="PlaySong.cpp" />
     <ClCompile Include="Sensor.cpp" />
     <ClCompile Include="Song.cpp" />

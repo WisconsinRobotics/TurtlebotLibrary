@@ -10,41 +10,48 @@
 #include "../../../cpp/include/msg/Sensor.hpp"
 #include "../../../cpp/include/msg/Script.hpp"
 #include "../../../cpp/include/msg/Wait.hpp"
+//should probably be added to actuator
+#include "../../../cpp/include/msg/Script.hpp"
+#include "../../../cpp/include/msg/PlayScript.hpp"
 
 using TurtlebotLibrary::TurtlebotCommandCode;
 
 namespace TurtlebotLibrarySharp
 {
-    public enum class TurtlebotCommandCode : System::Byte
-    {
-        // Start Commands
-        Start = 128,
-        Baud = 129, // not supported
+	public enum class TurtlebotCommandCode : System::Byte
+	{
+		// Start Commands
+		Start = 128,
+		Baud = 129, // not supported
 
-        // Mode Commands
-        Safe = 131,
-        Full = 132,
+		// Mode Commands
+		Safe = 131,
+		Full = 132,
 
-        // Demo Commands
-        Demo = 136,
+		// Demo Commands
+		Demo = 136,
 
-        // Actuator Commands
-        Drive = 137,
-        Drive_Direct = 145,
-        Digital_Outputs = 147,
+		// Actuator Commands
+		Drive = 137,
+		Drive_Direct = 145,
+		Digital_Outputs = 147,
 
-        // Wait Commands
-        Wait_Time = 155,
-        Wait_Distance = 156,
-        Wait_Angle = 157,
-        Wait_Event = 158,
+		// Wait Commands
+		Wait_Time = 155,
+		Wait_Distance = 156,
+		Wait_Angle = 157,
+		Wait_Event = 158,
 
-        // Input packets
-        Sensor = 142,
+		// Input packets
+		Sensor = 142,
 
-        // Song
-        Song = 140,
-        PlaySong = 141
+		// Song
+		Song = 140,
+		PlaySong = 141,
+
+		// Script
+		Script = 152,
+		PlayScript = 153
     };
 
     public ref class TurtlebotMessage

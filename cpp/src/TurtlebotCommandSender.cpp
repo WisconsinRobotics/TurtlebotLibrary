@@ -4,7 +4,7 @@
 #include "msg/Start.hpp"
 #include "msg/Actuator.hpp"
 
-constexpr int DEFAULT_BAUD_RATE = 57600;
+constexpr int DEFAULT_BAUD_RATE = 115200;
 constexpr int READ_BUFFER_SIZE = 256;
 
 using namespace TurtlebotLibrary;

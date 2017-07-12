@@ -6,7 +6,7 @@
 
 using namespace TurtlebotLibrarySharp;
 
-constexpr int DEFAULT_BAUD_RATE = 57600;
+constexpr int DEFAULT_BAUD_RATE = 115200;
 
 TurtlebotCommandSender::TurtlebotCommandSender()
 {

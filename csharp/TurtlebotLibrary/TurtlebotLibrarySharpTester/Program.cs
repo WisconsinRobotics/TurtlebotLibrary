@@ -12,25 +12,13 @@ namespace TurtlebotLibrarySharpTester
     {
         static void Main(string[] args)
         {
-
-            //            Drive d = new Drive(100, 50);
-            //            byte[] buffer = d.Serialize();
-            //
-            //            foreach (byte b in buffer)
-            //                Console.Write("{0:X} ", b);
-            //            Console.WriteLine();
-            //
-            //            Console.Read();
-
             string serialPort = "";
             bool testMode = false;
 
             for (int index = 0; index < args.Length; ++index)
             {
                 if (args[index][0] != '-')
-                {
                     continue;
-                }
 
                 switch (args[index][1])
                 {
@@ -50,13 +38,21 @@ namespace TurtlebotLibrarySharpTester
 
             TurtlebotCommandSender c = new TurtlebotCommandSender();
             c.Initialize(serialPort, DriveMode.Safe);
-            //Drive driveMessage = new Drive((int)100, (int)Drive.STRAIGHT);
-            //c.SendTurtlebotMessage(driveMessage);
-            //WaitTime w = new WaitTime(10);
-            //c.SendTurtlebotMessage(w);
-            //System.Threading.Thread.Sleep(5000);
-            //Drive stop = new Drive((int)0, (int)Drive.STRAIGHT);
-            //c.SendTurtlebotMessage(stop);
+
+            if (!testMode)
+            {
+                int velocity = 100;
+                int radius = Drive.STRAIGHT;
+
+                Drive d = new Drive(velocity, radius);
+                c.SendTurtlebotMessage(d);
+                
+                byte[] buffer = d.Serialize();
+                foreach (byte b in buffer)
+                    Console.Write("{0:X} ", b);
+                Console.WriteLine();
+            }
+
             Console.Read();
         }
     }

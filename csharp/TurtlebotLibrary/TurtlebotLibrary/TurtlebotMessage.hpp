@@ -8,7 +8,6 @@
 #include "../../../cpp/include/msg/Mode.hpp"
 #include "../../../cpp/include/msg/Start.hpp"
 #include "../../../cpp/include/msg/Sensor.hpp"
-#include "../../../cpp/include/msg/Wait.hpp"
 
 using TurtlebotLibrary::TurtlebotCommandCode;
 
@@ -30,13 +29,6 @@ namespace TurtlebotLibrarySharp
         // Actuator Commands
         Drive = 137,
         Drive_Direct = 145,
-        Digital_Outputs = 147,
-
-        // Wait Commands
-        Wait_Time = 155,
-        Wait_Distance = 156,
-        Wait_Angle = 157,
-        Wait_Event = 158,
 
         // Input packets
         Sensor = 142,

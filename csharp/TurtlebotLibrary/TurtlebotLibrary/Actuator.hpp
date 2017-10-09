@@ -24,16 +24,6 @@ namespace TurtlebotLibrarySharp
             void SetRadius(System::Int32 radius);
     };
 
-    public ref class DigitalOutputs : public TurtlebotMessage
-    {
-        public:
-            DigitalOutputs();
-            ~DigitalOutputs();
-            array<System::Boolean>^ GetPinEnables();
-            System::Boolean IsPinEnabled(System::Byte pin);
-            void SetPinEnable(System::Byte pin, bool enable);
-    };
-
     public ref class Song : public TurtlebotMessage
     {
         public:

@@ -137,17 +137,14 @@
     <ClInclude Include="Start.hpp" />
     <ClInclude Include="TurtlebotCommandSender.hpp" />
     <ClInclude Include="TurtlebotMessage.hpp" />
-    <ClInclude Include="Wait.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DigitalOutputs.cpp" />
     <ClCompile Include="Drive.cpp" />
     <ClCompile Include="PlaySong.cpp" />
     <ClCompile Include="Sensor.cpp" />
     <ClCompile Include="Song.cpp" />
     <ClCompile Include="TurtlebotCommandSender.cpp" />
     <ClCompile Include="TurtlebotMessage.cpp" />
-    <ClCompile Include="Wait.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

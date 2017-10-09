@@ -117,11 +117,8 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\cpp\include\msg\Actuator.hpp" />
     <ClInclude Include="..\..\..\cpp\include\msg\Mode.hpp" />
-    <ClInclude Include="..\..\..\cpp\include\msg\PlayScript.hpp" />
-    <ClInclude Include="..\..\..\cpp\include\msg\Script.hpp" />
     <ClInclude Include="..\..\..\cpp\include\msg\Sensor.hpp" />
     <ClInclude Include="..\..\..\cpp\include\msg\Start.hpp" />
-    <ClInclude Include="..\..\..\cpp\include\msg\Wait.hpp" />
     <ClInclude Include="..\..\..\cpp\include\Note.hpp" />
     <ClInclude Include="..\..\..\cpp\include\Serial.hpp" />
     <ClInclude Include="..\..\..\cpp\include\TurtlebotCommandSender.hpp" />
@@ -129,14 +126,10 @@
     <ClInclude Include="..\..\..\cpp\include\TurtlebotMessage.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\cpp\src\msg\DigitalOutputs.cpp" />
     <ClCompile Include="..\..\..\cpp\src\msg\Drive.cpp" />
-    <ClCompile Include="..\..\..\cpp\src\msg\PlayScript.cpp" />
     <ClCompile Include="..\..\..\cpp\src\msg\PlaySong.cpp" />
-    <ClCompile Include="..\..\..\cpp\src\msg\Script.cpp" />
     <ClCompile Include="..\..\..\cpp\src\msg\Sensor.cpp" />
     <ClCompile Include="..\..\..\cpp\src\msg\Song.cpp" />
-    <ClCompile Include="..\..\..\cpp\src\msg\Wait.cpp" />
     <ClCompile Include="..\..\..\cpp\src\Serial.cpp" />
     <ClCompile Include="..\..\..\cpp\src\TurtlebotCommandSender.cpp" />
     <ClCompile Include="..\..\..\cpp\src\TurtlebotMessage.cpp" />

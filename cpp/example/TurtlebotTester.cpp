@@ -29,33 +29,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    for (Note& n : on_wisconsin)
-        n.duration *= EIGHTH_NOTES_PER_DURATION;
-	std::cout << argv[1];
-    Script *s1 = new Script();
-	Script *s2 = new Script();
-    Drive *driveStraight = new Drive(150, Drive::STRAIGHT);
-    WaitDistance *wait1Meter = new WaitDistance(500);
-    Drive *driveRight = new Drive(150, Drive::CLOCKWISE);
-	Drive *driveLeft = new Drive(150, Drive::COUNTERCLOCKWISE);
-	WaitAngle *waitLeftAngle = new WaitAngle(90);
-	WaitAngle *waitRightAngle = new WaitAngle(-90);
-	Drive *driveStop = new Drive(0, Drive::STRAIGHT);
-    s1->AddCommand(driveStraight);
-	s1->AddCommand(wait1Meter);
-	s1->AddCommand(driveRight);
-	s1->AddCommand(waitRightAngle);
-	s1->AddCommand(driveStraight);
-	s1->AddCommand(wait1Meter);
-	s1->AddCommand(driveLeft);
-	s1->AddCommand(waitLeftAngle);
-	s1->AddCommand(driveStraight);
-	s1->AddCommand(wait1Meter);
-	s1->AddCommand(driveStop);
-	cmder.SendTurtlebotMessage(s1);
-//	cmder.SendTurtlebotMessage(s2);
-	PlayScript *playScript = new PlayScript();
-	cmder.SendTurtlebotMessage(playScript);
-
+	Drive *drive = new Drive(150, Drive::STRAIGHT);
+	cmder.SendTurtlebotMessage(drive);
 	return 0;
 }

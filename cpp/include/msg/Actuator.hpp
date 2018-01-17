@@ -32,22 +32,6 @@ namespace TurtlebotLibrary
             int radius;
     };
 
-    class DigitalOutputs : public TurtlebotMessage
-    {
-        public:
-            DigitalOutputs();
-            ~DigitalOutputs();
-            std::bitset<8> GetPinEnables() const;
-            bool IsPinEnabled(uint8_t pin) const;
-            void SetPinEnable(uint8_t pin, bool enable);
-
-        protected:
-            std::vector<uint8_t> SerializePayload();
-
-        private:
-            std::bitset<8> pinEnable;
-    };
-
     class Song : public TurtlebotMessage
     {
         public:

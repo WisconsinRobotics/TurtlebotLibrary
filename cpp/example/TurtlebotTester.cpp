@@ -29,6 +29,8 @@ int main(int argc, char **argv)
         return 1;
     }
 
+    /*
+
     for (Note& n : on_wisconsin)
         n.duration *= EIGHTH_NOTES_PER_DURATION;
 	std::cout << argv[1];
@@ -56,6 +58,7 @@ int main(int argc, char **argv)
 //	cmder.SendTurtlebotMessage(s2);
 	PlayScript *playScript = new PlayScript();
 	cmder.SendTurtlebotMessage(playScript);
-
+    */
+    
 	return 0;
 }
